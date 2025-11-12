@@ -232,6 +232,23 @@ img {
     font-weight: 600;
     color: #495057;
 }
+/*--section pour les logos diffilant--*/
+.logo-visuel{
+    overflow: hidden;
+    padding: 20px 0;
+    transition: all 0.3s ease-out ;
+
+}
+.logo-visuel .image {
+    padding: 80px 0;
+    display: flex;
+    overflow: hidden;
+    -ms-overflow-style: none;
+   scrollbar-width: none;
+   flex-wrap: nowrap;
+    justify-content: space-between;
+   
+}
 
 /* --- Section "Why Us" (3 colonnes) --- */
 .why-us-section {
