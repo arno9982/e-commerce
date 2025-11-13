@@ -1,0 +1,144 @@
+/* --- Global Styles --- */
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background-color: #f7f8fc;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- Main Section --- */
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px; /* Espace entre les deux blocs */
+  padding: 100px 40px;
+  min-height: 100vh;
+}
+
+/* --- Common Box Styles --- */
+.login-box,
+.register-box {
+  background-color: #f9fafe;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  width: 480px;
+  max-width: 90%;
+  text-align: left;
+}
+
+/* --- Headings & Paragraphs --- */
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* --- Login Form --- */
+label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+
+label span {
+  color: red;
+}
+
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #2a64ff;
+  outline: none;
+}
+
+/* --- Buttons --- */
+.btn-signin {
+  background-color: #2a64ff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-signin:hover {
+  background-color: #1a4ed8;
+}
+
+/* --- Forgot Password Link --- */
+.forgot {
+  color: #2a64ff;
+  font-size: 13px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.forgot:hover {
+  text-decoration: underline;
+}
+
+/* --- Login Actions (Sign in + Forgot Password) --- */
+.login-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* --- Register Box Specific Styles --- */
+.register-box ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.register-box li {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* --- Hover effect for both boxes --- */
+.login-box:hover,
+.register-box:hover {
+  box-shadow: 0 8px 18px rgba(42, 100, 255, 0.15);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 950px) {
+  .login-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 20px;
+  }
+
+  .login-box,
+  .register-box {
+    width: 100%;
+    max-width: 500px;
+  }
+}

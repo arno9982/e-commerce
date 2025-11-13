@@ -1,0 +1,88 @@
+body{
+    font-family:"Poppins", Arial, Sans-Serif;
+    background-color: #f7f8fc;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* --- Container --- */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+/* --- Login Box --- */
+.login-box {
+  background-color: hwb(225 88% 11% / 0.897);
+  border-radius:  10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  width: 420px;
+  max-width: 90%;
+}
+.login-box h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 10px;
+}
+.login-box p {
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+  display: block;
+  margin-bottom: 6px;
+}
+label span {
+  color: red;
+}
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+}
+input:focus {
+  border-color: #2a64ff;
+  outline: none;
+}
+.login-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btn-signin {
+  background-color: #2a64ff;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-signin:hover {
+  background-color: #1a4ed8;
+}
+.forgot {
+  color: #2a64ff;
+  font-size: 13px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.forgot:hover {
+  text-decoration: underline;
+}
