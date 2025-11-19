@@ -498,3 +498,35 @@ footer {
     font-size: 2rem; /* 32px */
     color: #aaa;
 }
+.logo-visuel {
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+    background: #fff; /* optionnel */
+  }
+  
+  .logo-visuel .image {
+    display: flex;
+    gap: 40px; /* espace entre logos */
+    animation: scroll 20s linear infinite;
+    /* duplication visuelle pour que le défilement soit sans coupure */
+    width: max-content;
+    
+  }
+  
+  .logo-visuel .image img {
+    height: 80px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  /* Animation */
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
