@@ -479,3 +479,342 @@
     init();
   }
 })();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Variables globales
+let allProducts = [];
+let filteredProducts = [];
+let currentPage = 1;
+const productsPerPage = 12;
+
+// État des filtres
+let filters = {
+    priceMax: 1000000, // Mettre un prix très élevé par défaut
+    size: null,
+    shoeSize: null
+};
+
+// Récupération de tous les produits depuis le HTML
+function getAllProductsFromHTML() {
+    const productCards = document.querySelectorAll('.product-card');
+    const products = [];
+    
+    productCards.forEach((card, index) => {
+        const category = card.querySelector('.category-tag').textContent.trim();
+        const name = card.querySelector('h3').textContent.trim();
+        const priceText = card.querySelector('.price').textContent;
+        const price = parseInt(priceText.replace(/[^0-9]/g, ''));
+        const ratingText = card.querySelector('.review-count').textContent;
+        const rating = parseFloat(ratingText.replace(/[()]/g, ''));
+        
+        // Récupérer les tailles depuis le HTML si elles existent
+        let sizes = [];
+        const sizesContainer = card.querySelector('.product-sizes');
+        if (sizesContainer) {
+            const sizeBadges = sizesContainer.querySelectorAll('.size-badge');
+            sizes = Array.from(sizeBadges).map(badge => badge.textContent.trim());
+        }
+        
+        products.push({
+            id: index + 1,
+            element: card,
+            category: category,
+            name: name,
+            price: price,
+            rating: rating,
+            sizes: sizes
+        });
+    });
+    
+    return products;
+}
+
+// Fonction pour afficher les produits
+function displayProducts() {
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const endIndex = startIndex + productsPerPage;
+    const productsToShow = filteredProducts.slice(startIndex, endIndex);
+    
+    // Cacher tous les produits
+    allProducts.forEach(product => {
+        product.element.style.display = 'none';
+    });
+    
+    // Afficher uniquement les produits filtrés de la page actuelle
+    productsToShow.forEach(product => {
+        product.element.style.display = 'block';
+    });
+    
+    updatePagination();
+}
+
+// Appliquer les filtres
+function applyFilters() {
+    filteredProducts = allProducts.filter(product => {
+        // Filtre de prix
+        if (product.price > filters.priceMax) {
+            return false;
+        }
+        
+        // Filtre de taille (vêtements)
+        if (filters.size && product.category === 'VÊTEMENTS') {
+            if (!product.sizes.includes(filters.size.toUpperCase())) {
+                return false;
+            }
+        }
+        
+        // Filtre de taille (chaussures)
+        if (filters.shoeSize && product.category === 'CHAUSSURES') {
+            if (!product.sizes.includes(filters.shoeSize)) {
+                return false;
+            }
+        }
+        
+        return true;
+    });
+    
+    currentPage = 1;
+    displayProducts();
+}
+
+// Mettre à jour la pagination
+function updatePagination() {
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    const pagination = document.querySelector('.pagination');
+    
+    if (!pagination) return;
+    
+    pagination.innerHTML = '';
+    
+    // Bouton précédent
+    const prevButton = document.createElement('a');
+    prevButton.href = '#';
+    prevButton.innerHTML = '&laquo; Précédent';
+    if (currentPage === 1) {
+        prevButton.classList.add('disabled');
+        prevButton.style.opacity = '0.5';
+        prevButton.style.pointerEvents = 'none';
+    }
+    prevButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage > 1) {
+            currentPage--;
+            displayProducts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+    pagination.appendChild(prevButton);
+    
+    // Numéros de page
+    const maxPagesToShow = 5;
+    let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
+    let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
+    
+    if (endPage - startPage < maxPagesToShow - 1) {
+        startPage = Math.max(1, endPage - maxPagesToShow + 1);
+    }
+    
+    for (let i = startPage; i <= endPage; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.href = '#';
+        pageLink.textContent = i;
+        if (i === currentPage) {
+            pageLink.classList.add('active');
+        }
+        pageLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentPage = i;
+            displayProducts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        pagination.appendChild(pageLink);
+    }
+    
+    // Bouton suivant
+    const nextButton = document.createElement('a');
+    nextButton.href = '#';
+    nextButton.innerHTML = 'Suivant &raquo;';
+    if (currentPage === totalPages || totalPages === 0) {
+        nextButton.classList.add('disabled');
+        nextButton.style.opacity = '0.5';
+        nextButton.style.pointerEvents = 'none';
+    }
+    nextButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayProducts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    });
+    pagination.appendChild(nextButton);
+}
+
+// Initialisation au chargement de la page
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Page chargée, initialisation...');
+    
+    // Récupérer les produits depuis le HTML
+    allProducts = getAllProductsFromHTML();
+    filteredProducts = [...allProducts];
+    
+    console.log('Nombre de produits trouvés:', allProducts.length);
+    
+    // Afficher les produits initiaux
+    displayProducts();
+    
+    // Filtre de prix
+    const priceRange = document.querySelector('.price-range');
+    if (priceRange) {
+        // Mettre à jour l'affichage du prix
+        const priceDisplay = document.createElement('div');
+        priceDisplay.style.textAlign = 'center';
+        priceDisplay.style.marginTop = '10px';
+        priceDisplay.style.fontWeight = 'bold';
+        priceRange.parentNode.insertBefore(priceDisplay, priceRange.nextSibling);
+        
+        const updatePriceDisplay = () => {
+            const value = parseInt(priceRange.value);
+            const price = value * 100; // Convertir en FCFA
+            priceDisplay.textContent = `Max: ${price.toLocaleString()} FCFA`;
+            filters.priceMax = price;
+        };
+        
+        updatePriceDisplay();
+        
+        priceRange.addEventListener('input', updatePriceDisplay);
+    }
+    
+    // Filtre de taille (vêtements)
+    const sizeInputs = document.querySelectorAll('input[name="size"]');
+    sizeInputs.forEach(input => {
+        input.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                filters.size = e.target.value;
+                // Décocher les autres
+                sizeInputs.forEach(otherInput => {
+                    if (otherInput !== e.target) {
+                        otherInput.checked = false;
+                    }
+                });
+            } else {
+                filters.size = null;
+            }
+        });
+    });
+    
+    // Filtre de taille (chaussures)
+    const shoeSizeInputs = document.querySelectorAll('input[name="shoe-size"]');
+    shoeSizeInputs.forEach(input => {
+        input.addEventListener('change', (e) => {
+            if (e.target.checked) {
+                filters.shoeSize = e.target.value;
+                // Décocher les autres
+                shoeSizeInputs.forEach(otherInput => {
+                    if (otherInput !== e.target) {
+                        otherInput.checked = false;
+                    }
+                });
+            } else {
+                filters.shoeSize = null;
+            }
+        });
+    });
+    
+    // Bouton appliquer les filtres
+    const applyButton = document.querySelector('.apply-filters-btn');
+    if (applyButton) {
+        applyButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Application des filtres:', filters);
+            applyFilters();
+        });
+    }
+    
+    // Filtrage par catégorie
+    const categoryLinks = document.querySelectorAll('.category-list a');
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const categoryText = e.target.textContent.trim().toUpperCase();
+            
+            console.log('Catégorie cliquée:', categoryText);
+            
+            // Mapper les catégories françaises vers les catégories anglaises
+            const categoryMap = {
+                'ROBES & JUPES': 'VÊTEMENTS',
+                'T-SHIRTS & HAUTS': 'VÊTEMENTS',
+                'JEANS & PANTALONS': 'VÊTEMENTS',
+                'VESTES & MANTEAUX': 'VÊTEMENTS',
+                'CHAUSSURES FEMME': 'CHAUSSURES',
+                'CHAUSSURES HOMME': 'CHAUSSURES',
+                'ACCESSOIRES': 'ACCESSOIRES'
+            };
+            
+            const category = categoryMap[categoryText];
+            
+            if (category) {
+                filteredProducts = allProducts.filter(p => p.category === category);
+                currentPage = 1;
+                displayProducts();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Réinitialiser les filtres en cliquant sur le titre "Catégories"
+    const categoryTitle = document.querySelector('.sidebar h2');
+    if (categoryTitle) {
+        categoryTitle.style.cursor = 'pointer';
+        categoryTitle.title = 'Cliquez pour afficher tous les produits';
+        categoryTitle.addEventListener('click', () => {
+            console.log('Réinitialisation des filtres');
+            
+            // Réinitialiser les filtres
+            filteredProducts = [...allProducts];
+            filters = {
+                priceMax: 1000000,
+                size: null,
+                shoeSize: null
+            };
+            
+            // Réinitialiser les inputs
+            document.querySelectorAll('input[name="size"]').forEach(input => input.checked = false);
+            document.querySelectorAll('input[name="shoe-size"]').forEach(input => input.checked = false);
+            
+            const priceRange = document.querySelector('.price-range');
+            if (priceRange) {
+                priceRange.value = 150;
+                const event = new Event('input');
+                priceRange.dispatchEvent(event);
+            }
+            
+            currentPage = 1;
+            displayProducts();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+    
+    console.log('Initialisation terminée');
+});
