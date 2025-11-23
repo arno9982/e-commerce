@@ -17,23 +17,30 @@ main h3{
 }
 main .container{
     background-color: white;
-    padding: 2rem 3rem;
     display: flex;
     gap: 2rem;
     overflow-y: scroll;
     max-height: 100vh;
     position: relative;
+    flex-direction: column; /* MOBILE : Empile le sommaire et le contenu */
+    padding: 1rem; /* Réduire le padding sur mobile */
+    overflow-y: visible; /* Retire le scroll forcé sur mobile */
+    max-height: none;
+    gap: 1rem;
 }
 main .container .legend{
     background-color: var(--bg);
     height: fit-content;
     padding: 1.5rem 1rem;
-    position: sticky;
-    top: 1rem;
     min-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+     /* MOBILE : Le sommaire prend toute la largeur */
+    min-width: 100%; 
+    position: relative; /* Retire l'effet sticky sur mobile */
+    top: auto;
+    order: 1; /* Le place en haut de la page */
 }
 main .container .legend a:hover{
     text-decoration: underline;
@@ -46,4 +53,22 @@ main ol li{
     margin-bottom: 0.5rem;
     padding-left: 1.5rem;
     list-style-type: decimal;
+}
+
+
+/* TABLETTE ET DESKTOP (à partir de 992px) */
+@media (min-width: 992px) {
+    main .container {
+        flex-direction: row; /* DESKTOP : Remet en colonnes */
+        padding: 2rem 3rem;
+        overflow-y: scroll; 
+        max-height: 100vh; /* Rétablit la hauteur maximale */
+    }
+    
+    main .container .legend {
+        min-width: 300px; /* Rétablit la largeur pour desktop */
+        position: sticky; /* Rétablit l'effet sticky */
+        top: 1rem;
+        order: 0;
+    }
 }
