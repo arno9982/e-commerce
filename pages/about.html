@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
     <link rel="stylesheet" href="../styles/normalize-perso.css">
-    <link rel="stylesheet" href="../base.css">
-    <link rel="stylesheet" href="../home.css">
-    <link rel="stylesheet" href="../styles/about.css">
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - EazyShop</title>
+    <title>À Propos - Vente de vetements</title>
+    
+    <link rel="stylesheet" href="../styles/about.css">
+    <link rel="stylesheet" href="../base.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
      <header>
@@ -27,7 +33,7 @@
                     <span>&nbsp;OFF</span>
                 </div>
                 <div class="promo-third">
-                    <a href="product.html" class="btn-shop">
+                    <a href="" class="btn-shop">
                         Shop Now
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                             <path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"/>
@@ -49,8 +55,8 @@
                     </button>
                 </div>
                 <div class="header-third">
-                    <button type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+                    <button type="button" id="theme-toggle">
+                        <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
                             <path d="M480-360q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm0 80q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM200-440H40v-80h160v80Zm720 0H760v-80h160v80ZM440-760v-160h80v160h-80Zm0 720v-160h80v160h-80ZM256-650l-101-97 57-59 96 100-52 56Zm492 496-97-101 53-55 101 97-57 59Zm-98-550 97-101 59 57-100 96-56-52ZM154-212l101-97 55 53-97 101-59-57Zm326-268Z"/>
                         </svg>
                     </button>
@@ -72,7 +78,7 @@
             <div class="container">
                 <div class="menu-first">
                     <nav>
-                       <a href="../index.html" class="active-link">Home</a>
+                         <a href="../index.html">Home</a>
                         <a href="product.html">Products</a>
                         <a href="contact.html">Contact</a>
                         <a href="about.html">About us</a>
@@ -112,37 +118,7 @@
                     <p>We always aim to please our customers by providing the best products and services. Our team is passionate about technology and dedicated to helping you find the perfect setup.</p>
                 </div>
                 <div class="col-image">
-                    <img src="images/image_bureau.png" alt="Intérieur du magasin d'informatique">
-                </div>
-            </div>
-        </section>
-
-        <section class="about-section bg-light">
-            <div class="container two-col-layout row-reverse">
-                <div class="col-text">
-                    <div class="section-title">
-                        <i class="icon fa-solid fa-comment-dots"></i>
-                        <h2>shop.com</h2>
-                    </div>
-                    <p>We believe in quality and performance. Our shop features a curated selection of the latest technology, ensuring you get the best value for your money. Browse our extensive range of products today.</p>
-                </div>
-                <div class="col-image">
-                    <img src="images/image_clavier.png" alt="Clavier mécanique">
-                </div>
-            </div>
-        </section>
-
-        <section class="about-section bg-dark">
-            <div class="container two-col-layout">
-                <div class="col-text">
-                    <div class="section-title">
-                        <i class="icon fa-solid fa-shield-halved"></i>
-                        <h2>Now You're in Safe Hands</h2>
-                    </div>
-                    <p>From purchase to setup, our experts are here to support you. We offer comprehensive warranties and customer service to ensure you're always covered. Your peace of mind is our priority.</p>
-                </div>
-                <div class="col-image">
-                    <img src="images/image_pc_vert.png" alt="PC Gamer avec éclairage vert">
+                    <img src="../images/about/our_product.jpeg" alt="visuel game de produits vendus">
                 </div>
             </div>
         </section>
@@ -154,10 +130,10 @@
                         <i class="icon fa-solid fa-comment-dots"></i>
                         <h2>The Highest Quality of Products</h2>
                     </div>
-                    <p>Every component is tested for reliability and performance. We partner with leading brands to bring you cutting-edge technology that lasts. Quality is not just a promise, it's our standard.</p>
+                    <p>Our commitment to exceptional quality ensures that every piece of clothing is crafted with care, using premium materials to deliver styl and comfort that lasts.</p>
                 </div>
                 <div class="col-image">
-                    <img src="images/image_pc_blanc.png" alt="PC Gamer blanc avec éclairage RGB">
+                    <img src="../images/about/image_quality.jpeg" alt="image illustrant la qualite des produits">
                 </div>
             </div>
         </section>
@@ -170,9 +146,33 @@
                         <h2>We Deliver To Any Regions</h2>
                     </div>
                     <p>No matter where you are, we'll get your order to you. Our logistics network ensures fast, safe, and reliable shipping to all regions. Track your order from our warehouse to your doorstep.</p>
+                    
                 </div>
                 <div class="col-image">
-                    <img src="images/image_pc_violet.png" alt="PC Gamer blanc avec éclairage bleu">
+                    <img src="../images/about/Tom_Suscriber.jfif" alt="image d'un client satisfait qui donne un temoignage">
+                </div>
+            </div>
+        </section>
+        <h1 class="brand">Our brands</h1>
+        <section class="logo-visuel">
+            <div class="logo-slider" aria-hidden="false">
+                <div class="logo-track">
+                    <img src="../images/about/puma.jpeg" alt="puma logo">
+                    <img src="../images/about/nike.jpeg" alt="nike logo">
+                    <img src="../images/about/adidas.jpeg" alt="adidas logo">
+                    <img src="../images/about/louis.jpeg" alt="louis logo">
+                    <img src="../images/about/nike.jpeg" alt="nike logo">
+                    <img src="../images/about/adidas.jpeg" alt="adidas logo">
+                    <img src="../images/about/louis.jpeg" alt="louis logo">
+                </div>
+                <div class="logo-track" aria-hidden="true">
+                    <img src="../images/about/puma.jpeg" alt="puma logo">
+                    <img src="../images/about/nike.jpeg" alt="nike logo">
+                    <img src="../images/about/adidas.jpeg" alt="adidas logo">
+                    <img src="../images/about/louis.jpeg" alt="louis logo">
+                    <img src="../images/about/nike.jpeg" alt="nike logo">
+                    <img src="../images/about/adidas.jpeg" alt="adidas logo">
+                    <img src="../images/about/louis.jpeg" alt="louis logo">
                 </div>
             </div>
         </section>
@@ -181,7 +181,7 @@
             <div class="container">
                 <i class="icon-quote fa-solid fa-quote-left"></i>
                 <blockquote>
-                    "I'm extremely satisfied with my purchase. The delivery was fast, and the PC performs flawlessly. The customer service team was also very helpful in answering my questions."
+                    "Excatly as described! The product matches the pictures. Good values for money. Thanks!"
                 </blockquote>
                 <p class="author">- Tom H.</p>
             </div>
@@ -282,10 +282,10 @@
                 </div>
                 <div class="payment-box">
                     <img src="../images/payment/paypal.png" alt="Paypal">
-                    <img src="../images/payment/visa.png" alt="Paypal">
-                    <img src="../images/payment/mastercard.png" alt="Paypal">
-                    <img src="../images/payment/orange-money.png" alt="Paypal">
-                    <img src="../images/payment/momo.png" alt="Paypal">
+                    <img src="../images/payment/visa.png" alt="Visa">
+                    <img src="../images/payment/mastercard.png" alt="Mastercard">
+                    <img src="../images/payment/orange-money.png" alt="Orange Money">
+                    <img src="../images/payment/momo.png" alt="Momo">
                 </div>
                 <div class="copyright-box">
                     Copyright &copy; 2025 EazyShop, Ltd.
@@ -293,6 +293,6 @@
             </div>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="../javascript/about.js"></script>
 </body>
 </html>
