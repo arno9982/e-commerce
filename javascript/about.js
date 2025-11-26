@@ -38,3 +38,32 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+
+// --- Logique FAQ Accordéon ---
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            const icon = question.querySelector('.icon-toggle');
+            const answer = item.querySelector('.faq-answer');
+            
+            // Toggle la classe active
+            item.classList.toggle('active');
+
+            // Gestion de l'animation smooth de la hauteur
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                // Change l'icône en moins (-)
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+                // Optionnel : annule la rotation CSS si on change l'icône
+                icon.style.transform = 'rotate(0deg)'; 
+            } else {
+                answer.style.maxHeight = null;
+                // Remet l'icône en plus (+)
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        });
+    });
