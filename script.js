@@ -38,3 +38,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+
+
+
+
+// ajout
+
+
+// Fonction principale pour basculer le thème
+    const toggleTheme = () => {
+        // 1. Basculer la classe 'dark-mode' sur le body
+        const isDarkMode = body.classList.toggle('dark-mode'); 
+
+        // 2. Mettre à jour l'icône (Soleil si clair, Lune si sombre)
+        if (themeIcon) {
+            themeIcon.querySelector('path').setAttribute('d', isDarkMode ? moonIconPath : sunIconPath);
+        }
+
+        // 3. Stocker la préférence de l'utilisateur
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    };
+
+    // 4. Appliquer le thème au chargement de la page
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark') {
+        // Si le thème sombre est stocké, on l'applique
+        body.classList.add('dark-mode');
+        if (themeIcon) {
+            themeIcon.querySelector('path').setAttribute('d', moonIconPath);
+        }
+    } 
+    // Si 'light' est stocké ou s'il n'y a rien, le mode clair par défaut s'applique
+
+    // 5. Attacher l'écouteur d'événement au bouton
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
