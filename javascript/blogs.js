@@ -19,19 +19,34 @@ window.addEventListener('scroll', showCardsOnScroll);
 // Appel initial
 showCardsOnScroll();
 
-const readMoreBtn=document.querySelector(".readMore");
-const moreText=document.querySelector(".moreText");
-let expanded=false;
-readMoreBtn.addEventListener("click", function(event){event.preventDefault()  //empeche le rechargement de la page
 
-    if (!expanded){
-        moreText.computedStyleMap.display="inline";
-        readMoreBtn.textContent="Lire moins";
-        expanded=true;
-    }else{
-        moreText.computedStyleMap.display="none";
-        readMoreBtn.textContent="Lire la suite";
-        expanded=false;
-    }
 
+//Récuperation 
+const modal=document.getElementById("blog-modal");
+const modalTitle=document.querySelector(".blog-title");
+const modalContent=document.querySelector(".blog-content");
+const blogImages=document.querySelectorAll(".blog-image");
+const modalClose=document.querySelector(".modal-close");
+
+
+//Ouvrir le modal au clic sur une carte de blog
+document.querySelectorAll(".blog-card").forEach(card=>{
+    card.addEventListener("click", function(){
+modalTitle.textContent=card.dataset.title;
+
+modalContent.textContent=card.dataset.content;
+
+modal.style.display="flex";
+    });
+
+});
+//Fermer le modal en cliquant sur la croix
+modalClose.addEventListener("click", function(){
+    modal.style.display="none";
+});
+//Fermer le modal en cliquant en dehors du contenu
+modalClose.addEventListener("click", function(e){
+    if(e.target===modal){
+        modal.style.display="none";
+    };
 });
