@@ -818,3 +818,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     console.log('Initialisation terminée');
 });
+
+
+
+
+
+
+
+
+

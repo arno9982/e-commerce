@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const isDarkMode = body.classList.toggle('dark-mode'); 
 
         // 2. Mettre à jour l'icône (Soleil si clair, Lune si sombre)
-        if (themeIcon) {
+        if (themeIcon) { 
             themeIcon.querySelector('path').setAttribute('d', isDarkMode ? moonIconPath : sunIconPath);
         }
 
