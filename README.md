@@ -78,13 +78,13 @@ Pour travailler sur une tâche assignée (Issue #X), chaque développeur DOIT su
 Le Chef de Projet se chargera de la revue du code et de la fusion une fois l'approbation obtenue.
 
 ## emails
-SONTSA TSAGUE ARNO ENGEL
-SIMO TEGADJOUE DARREN 
-MAMOUDOU HAMADOU
-TSETSING ANGE 
-DJOU ARTHUR
-KOM FELICIEN
-SANDRA SANAMA
-EYENGA ZEH ROSE
-KENGNE IVAN
-TCHIHALE RAPHAEL
+SONTSA TSAGUE ARNO ENGEL  arno9882;
+SIMO TEGADJOUE DARREN     Darren-creator648 ;
+MAMOUDOU HAMADOU          MAMOUDOU22p661 ;
+TSETSING ANGE             manuellanicole237
+DJOU ARTHUR             DjouArthur;
+KOM FELICIEN            felicien-kom;
+SANDRA SANAMA           sandrasanama;
+EYENGA ZEH ROSE         roseeyenga;
+KENGNE IVAN             MasterCoder IvanRick23;
+TCHIHALE RAPHAEL        raphaeltchihale-prog;
