@@ -42,16 +42,6 @@ Pour visualiser le projet en local :
 
 ---
 
-## 4. Organisation de l'Équipe
-
-Ce projet est géré selon une méthodologie professionnelle impliquant une gestion de version rigoureuse et une attribution claire des tâches.
-
-| Rôle | Nom/Pseudo | Responsabilités |
-| :--- | :--- | :--- |
-| **Chef de Projet (Lead Git)** | **[Votre Nom/Pseudo ici]** | Configuration du dépôt, **Revue de Code**, Fusion des Pull Requests, Attribution des Issues. |
-| **Développeur A** | [Nom/Pseudo Étudiant 1] | Tâches de développement assignées (voir l'onglet **Issues**). |
-| **Développeur B** | [Nom/Pseudo Étudiant 2] | Tâches de développement assignées (voir l'onglet **Issues**). |
-| **Développeur C** | [Nom/Pseudo Étudiant 3] | Tâches de développement assignées (voir l'onglet **Issues**). |
 
 > 📌 **Répartition du travail :** Le travail à effectuer est listé dans l'onglet **[Issues](https://github.com/arno9982/e-commerce/issues)**, chaque tâche étant attribuée à un développeur spécifique.
 
@@ -86,3 +76,15 @@ Pour travailler sur une tâche assignée (Issue #X), chaque développeur DOIT su
     * Liez la PR à l'Issue correspondante (`#X`).
 
 Le Chef de Projet se chargera de la revue du code et de la fusion une fois l'approbation obtenue.
+
+## emails
+SONTSA TSAGUE ARNO ENGEL
+SIMO TEGADJOUE DARREN 
+MAMOUDOU HAMADOU
+TSETSING ANGE 
+DJOU ARTHUR
+KOM FELICIEN
+SANDRA SANAMA
+EYENGA ZEH ROSE
+KENGNE IVAN
+TCHIHALE RAPHAEL
