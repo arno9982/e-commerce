@@ -763,12 +763,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Mapper les catégories françaises vers les catégories anglaises
             const categoryMap = {
-                'ROBES & JUPES': 'VÊTEMENTS',
-                'T-SHIRTS & HAUTS': 'VÊTEMENTS',
-                'JEANS & PANTALONS': 'VÊTEMENTS',
-                'VESTES & MANTEAUX': 'VÊTEMENTS',
-                'CHAUSSURES FEMME': 'CHAUSSURES',
-                'CHAUSSURES HOMME': 'CHAUSSURES',
+                'ROBES & JUPES': 'ROBES & JUPES',
+                'T-SHIRTS & HAUTS': 'T-SHIRTS & HAUTS',
+                'JEANS & PANTALONS': 'JEANS & PANTALONS',
+                'VESTES & MANTEAUX': 'VESTES & MANTEAUX',
+                'CHAUSSURES FEMME': 'CHAUSSURES FEMME',
+                'CHAUSSURES HOMME': 'CHAUSSURES HOMME',
                 'ACCESSOIRES': 'ACCESSOIRES'
             };
             
