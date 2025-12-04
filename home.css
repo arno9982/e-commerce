@@ -1,3 +1,4 @@
+/* --- Styles de base et du mode sombre (inchangés) --- */
 header{
     box-shadow: 4px 0 4px rgb(0, 0, 0, 0.15);
 }
@@ -11,12 +12,40 @@ main .container{
     display: block;
     margin: 0 auto;
 }
+
+/* Mode clair par défaut */
+body {
+    background-color: #ffffff;
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Mode sombre appliqué à tout le body */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* S'assurer que tous les éléments héritent la couleur et fond */
+body.dark-mode *, 
+body.dark-mode a, 
+body.dark-mode button, 
+body.dark-mode input, 
+body.dark-mode textarea {
+    color: inherit;
+    background-color: inherit;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- HERO SECTION --- */
+/* ------------------------------------------------------------------ */
+
 .hero-section{
     display: grid;
     grid-template-rows: repeat(9, 1fr);
     grid-template-columns: repeat(9, 1fr);
     gap: 1rem;
-    height: 32rem;
+    height: 32rem; /* Hauteur définie pour le bureau */
     grid-template-areas:
     "first first first first first first fourth fourth fourth"
     "first first first first first first fourth fourth fourth"
@@ -26,30 +55,38 @@ main .container{
     "first first first first first first fifth fifth fifth"
     "second second second third third third fifth fifth fifth"
     "second second second third third third fifth fifth fifth"
-    "second second second third third third fifth fifth fifth"
+    "second second second third third third fifth fifth fifth";
 }
+
 .hero-section .second-box{
     background-image: url('images/card-1.jpg');
+    grid-area: second; /* S'assurer que les zones sont bien définies */
 }
 .hero-section .third-box{
     background-image: url('images/card-2.jpg');
+    grid-area: third;
 }
 .hero-section .fourth-box{
     background-image: url('images/card-3.jpg');
+    grid-area: fourth;
 }
 .hero-section .fifth-box{
     background-image: url('images/card-1.jpg');
+    grid-area: fifth;
 }
+.hero-section .first-box{
+    grid-area: first;
+}
+
 .hero-section > div{
     background-size: cover;
     background-position: center center;
 }
 
-
 .hero-section .first-box{
     padding: 2rem 2rem;
     background-color: var(--bg);
-    display: flex;
+    display: flex; /* Utilisé pour le contenu interne */
 }
 .hero-section .first-box > div{
     width: 50%;
@@ -163,11 +200,14 @@ main .container{
     color: white;
 }
 
+/* ------------------------------------------------------------------ */
+/* --- AWARD SECTION --- */
+/* ------------------------------------------------------------------ */
 .awards-section{
     display: grid;
     justify-content: center;
     grid-template-rows: repeat(1, 3.5rem);
-    grid-template-columns: repeat(4, minmax(200px, 250px));
+    grid-template-columns: repeat(4, minmax(200px, 250px)); /* 4 colonnes sur desktop */
     gap: 1rem;
     padding: 1.5rem 0.5rem;
 }
@@ -191,10 +231,13 @@ main .container{
     color: var(--text-muted);
 }
 
+/* ------------------------------------------------------------------ */
+/* --- PRESENT SECTION --- */
+/* ------------------------------------------------------------------ */
 .present-section{
     margin: 1.5rem 0;
     padding: 1.5rem 0;
-    display: flex;
+    display: flex; /* Flexbox sur desktop */
     gap: 5%;
 }
 .present-section > div{
@@ -254,6 +297,9 @@ main .container{
     border: 2px solid black;
 }
 
+/* ------------------------------------------------------------------ */
+/* --- SERVICES SECTION --- */
+/* ------------------------------------------------------------------ */
 .services-section h2{
     margin: 1rem 0 2rem 0;
     font-size: 2.2rem;
@@ -263,7 +309,7 @@ main .container{
 .services{
     display: grid;
     grid-template-rows: repeat(2, 360px);
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur desktop */
     gap: 1rem;
 }
 .services .service{
@@ -304,8 +350,11 @@ main .container{
     background-color: var(--accent-light);
 }
 
+/* ------------------------------------------------------------------ */
+/* --- TESTIMONIES SECTION --- */
+/* ------------------------------------------------------------------ */
 .testimonies-section{
-    padding: 0 10%;
+    padding: 0 10%; /* Padding horizontal réduit sur petit écran */
     margin: 2rem 0;
 }
 .testimonies-section h2{
@@ -317,7 +366,7 @@ main .container{
 .testimonies{
     display: grid;
     grid-template-rows: 250px;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur desktop */
     gap: 1rem;
 }
 .testimonies .testimony{
@@ -346,6 +395,9 @@ main .container{
     font-weight: bold;
 }
 
+/* ------------------------------------------------------------------ */
+/* --- SPONSORS SECTION --- */
+/* ------------------------------------------------------------------ */
 .sponsors-section{
     background-color: white;
     padding: 1rem 0;
@@ -358,7 +410,7 @@ main .container{
 .sponsors{
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(4, 180px);
+    grid-template-columns: repeat(4, 180px); /* 4 colonnes sur desktop */
     grid-template-rows: repeat(2, 48px);
     gap: 1.5rem;
 }
@@ -367,42 +419,153 @@ main .container{
     height: 100%;
 }
 
+/* ------------------------------------------------------------------ */
+/* --- MEDIA QUERIES --- */
+/* ------------------------------------------------------------------ */
 
+/* Pour les tablettes et plus petits écrans (max-width: 1024px) */
+@media (max-width: 1024px) {
+    /* Mise en page de la section Hero */
+    .hero-section {
+        height: auto; /* Permettre à la hauteur de s'adapter au contenu */
+        grid-template-columns: repeat(4, 1fr); /* Grille simplifiée pour tablette */
+        grid-template-rows: auto;
+        grid-template-areas:
+            "first first first first"
+            "first first first first"
+            "second second third third"
+            "fourth fourth fifth fifth"
+            "fourth fourth fifth fifth";
+    }
 
+    .hero-section .first-box {
+        flex-direction: column; /* Empiler le contenu de la première boîte */
+        align-items: center;
+    }
+    .hero-section .first-box > div {
+        width: 100%;
+    }
+    .hero-section .first-box .first-box-second {
+        display: none; /* Cachez l'image d'illustration sur tablette/mobile pour économiser de l'espace */
+    }
+    .hero-section .first-box .first-box-first h2 {
+        font-size: 1.75rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    .hero-section .first-box .first-box-first div {
+        justify-content: center; /* Centrer les boutons */
+    }
+    
+    /* Section Awards */
+    .awards-section {
+        grid-template-columns: repeat(2, minmax(200px, 1fr)); /* 2 colonnes sur tablette */
+        grid-template-rows: auto;
+        padding: 1.5rem 1rem;
+    }
 
+    /* Section Present */
+    .present-section {
+        flex-direction: column; /* Empiler les éléments de la section present */
+        text-align: center;
+        gap: 2rem;
+    }
+    .present-section .illustration-box {
+        justify-content: center;
+    }
+    .present-section .present-content .present-options {
+        justify-content: center;
+    }
 
+    /* Section Services */
+    .services {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
+        grid-template-rows: auto;
+        padding: 0 1rem;
+    }
 
+    /* Section Testimonies */
+    .testimonies {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur tablette */
+        grid-template-rows: auto;
+    }
 
-
-
-
-
-
-
-
-
-
-
-/* Mode clair par défaut */
-body {
-    background-color: #ffffff;
-    color: #000000;
-    transition: background-color 0.3s, color 0.3s;
+    /* Section Sponsors */
+    .sponsors {
+        grid-template-columns: repeat(4, 1fr); /* 4 colonnes plus petites */
+        grid-template-rows: auto;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
 }
 
-/* Mode sombre appliqué à tout le body */
-body.dark-mode {
-    background-color: #121212;
-    color: #ffffff;
-}
+/* Pour les mobiles (max-width: 600px) */
+@media (max-width: 600px) {
+    /* Mise en page de la section Hero */
+    .hero-section {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        grid-template-rows: auto;
+        grid-template-areas:
+            "first"
+            "second"
+            "third"
+            "fourth"
+            "fifth";
+        height: auto;
+    }
+    .hero-section > div {
+        min-height: 15rem; /* Donner une hauteur minimale aux boîtes d'images */
+    }
+    .hero-section .first-box {
+        min-height: auto;
+        padding: 1rem;
+    }
+    .hero-section .first-box .first-box-first h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .hero-section .first-box .first-box-first p {
+        font-size: 0.9rem;
+    }
+    .hero-section .first-box .first-box-first div {
+        flex-direction: column; /* Empiler les boutons */
+    }
+    .hero-section .first-box .first-box-first div a {
+        width: 80%; /* Largeur des boutons ajustée */
+    }
+    
+    /* Section Awards */
+    .awards-section {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        grid-template-rows: auto;
+    }
 
-/* S'assurer que tous les éléments héritent la couleur et fond */
-body.dark-mode *, 
-body.dark-mode a, 
-body.dark-mode button, 
-body.dark-mode input, 
-body.dark-mode textarea {
-    color: inherit;
-    background-color: inherit;
-}
+    /* Section Present */
+    .present-section .present-content .present-options {
+        flex-direction: column; /* Empiler les options */
+    }
+    .present-section .present-content .present-options a {
+        width: 80%;
+    }
 
+    /* Section Services */
+    .services {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        grid-template-rows: auto;
+    }
+
+    /* Section Testimonies */
+    .testimonies-section {
+        padding: 0 5%;
+    }
+    .testimonies {
+        grid-template-columns: 1fr; /* Une seule colonne sur mobile */
+        grid-template-rows: auto;
+    }
+
+    /* Section Sponsors */
+    .sponsors {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur mobile */
+        grid-template-rows: auto;
+    }
+}

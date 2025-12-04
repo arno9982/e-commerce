@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 200);
     });
-
+   
     // === LANCEMENT ===
     createMobileMenu();
     syncLanguageAndCurrency();
